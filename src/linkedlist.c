@@ -35,6 +35,18 @@ void createItem(Item *item,void *data, Item *next){
   item->next = next;
 
 }
+
+Item *linkSearch(LinkedList *list,void *data,Compare comparefunc){
+    Item *past = NULL;
+    Item *now = list->head;
+    if(now == NULL){
+      return NULL;
+    }
+    else {
+      while(comparefunc())
+    }
+
+}
 /*
 Item *LinkRemove(LinkedList *list,char *name){
 	Item *current = list->head;

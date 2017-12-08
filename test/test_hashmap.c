@@ -4,6 +4,7 @@
 #include "stdint.h"
 #include "linkedlist.h"
 #include <malloc.h>
+#include "integercompare.h"
 
 void setUp(void)
 {

@@ -7,9 +7,9 @@ int integerCompare(int value, int refvalue){
   }
   else if(value <refvalue)
   {
-    return 0;
+    return -1;
   }
   else{
-  return value == refvalue;
+  return 0;
 }
 }
