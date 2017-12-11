@@ -1,13 +1,14 @@
 #ifndef _LINKEDLIST_H
 #define _LINKEDLIST_H
-#include "hashmap.h"
+#include "data.h"
+
 
 typedef struct Item Item;
 typedef struct LinkedList LinkedList;
 
 struct Item {
   Item *next;
-  void *data;
+  Data *data;
 };
 
 struct LinkedList{
@@ -16,9 +17,11 @@ struct LinkedList{
   int len;
 };
 
+typedef int(*Compare)(void *value,void **refvalue);
+
 void listInit(LinkedList *list);
 void listAdd(LinkedList *list,Item *item);
-Item *LinkRemove(LinkedList *list,char *name);
+void *LinkRemove(LinkedList *list,uint32_t key,Compare comparefunc);
 void createItem(Item *item,void *data, Item *next);
-Item *linkSearch(Item *item,void *data,int hashValue,Compare comparefunc);
+Data *linkSearch(LinkedList *list,uint32_t key,Compare comparefunc);
 #endif // _LINKEDLIST_H

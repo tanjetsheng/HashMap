@@ -1,8 +1,4 @@
 #include "hashmap.h"
-#include "linkedlist.h"
-#include <stdint.h>
-#include <stdio.h>
-#include <malloc.h>
 
 void initHashMap(HashTable *table, int size){
   table->list = (LinkedList *)calloc(size * SIZE_FACTOR, sizeof(LinkedList));
@@ -17,11 +13,11 @@ void _HashMapAdd(HashTable *table, void *data, int hashValue){
 }
 
 void *_HashMapSearch(HashTable *table,uint32_t key,int index, Compare compareFunc){
-
+   return linkSearch(&table->list[index],key,(Compare)compareFunc);
 }
 
 void *_HashMapRemove(HashTable *table,uint32_t key,int index, Compare compareFunc){
-
+  return LinkRemove(&table->list[index],key,(Compare)compareFunc);
 }
 
 uint32_t hashUsingModule(uint32_t value,uint32_t range){

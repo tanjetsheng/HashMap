@@ -1,7 +1,5 @@
-#include <stdio.h>
 #include "linkedlist.h"
-#include <stdio.h>
-#include <string.h>
+
 
 
 void listInit(LinkedList *list) {
@@ -36,48 +34,53 @@ void createItem(Item *item,void *data, Item *next){
 
 }
 
-Item *linkSearch(LinkedList *list,void *data,Compare comparefunc){
+Data *linkSearch(LinkedList *list,uint32_t key,Compare comparefunc){
     Item *past = NULL;
     Item *now = list->head;
     if(now == NULL){
       return NULL;
     }
     else {
-      while(comparefunc())
+        while(comparefunc((void*)key,(void*)&(((Data *)now->data))->key) !=0){
+        past = now;
+        now = now->next;
+      }
+      return now->data;
     }
 
 }
-/*
-Item *LinkRemove(LinkedList *list,char *name){
-	Item *current = list->head;
-	Item *previous = NULL;
 
-	if(list->head==NULL){
+void *LinkRemove(LinkedList *list,uint32_t key,Compare comparefunc){
+  Item *past = NULL;
+	Item *now = list->head;
+
+	if(now == NULL){
 		return NULL;
 	}
-
-	else if(list->head==list->tail){   //first head
-		listInit(list);
-	}
-
 	else{
-		while(strcmp(((Student*)current->data)->name,name)!=0){
-			previous = current;
-			current = current->next;
+    while(comparefunc((void*)key,(void*)&(((Data *)now->data))->key) !=0){
+			past = now;
+			now = now->next;
 		}
-	}
-	if(current ==NULL){
-		return NULL;
-	}
-	else if(current ==list->tail){
-		list->tail=previous;
-		list->tail->next=NULL;
-		list->len--;
-	}
-	else{
-		previous->next = current->next;
-		list->len--;
-	}
+    if(now == list->head){
+      if(list->head==list->tail){   //first head
+       listInit(list);
+     }
+      else{
+				now = now->next;
+				list->head = now;
+				list->len--;
+      }
+     }
 
+	else if(now == list->tail){
+		    list->tail=past;
+		    past->next=NULL;
+		    list->len--;
+	     }
+	  else{
+		  past->next = now->next;
+		  list->len--;
+	   }
+   }
 }
-*/

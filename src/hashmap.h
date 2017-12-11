@@ -1,11 +1,15 @@
 #ifndef _HASHMAP_H
 #define _HASHMAP_H
-#include "stdint.h"
+#include <stdio.h>
+#include <stdint.h>
+#include <malloc.h>
 #include "linkedlist.h"
+#include "data.h"
+#include "integercompare.h"
 
 #define SIZE_FACTOR 3
 
-typedef int (*Compare)(void *data,void *refData);
+
 
 typedef struct HashTable HashTable;
 
@@ -16,7 +20,7 @@ struct HashTable{
 };
 
 void initHashMap(HashTable *table, int size);
-void _HashMapAdd(HashTable *table, void *data, int hashValue);
+void _HashMapAdd(HashTable *table, void *data, int hashValue,Compare compareFunc);
 void *_HashMapSearch(HashTable *table, uint32_t key,int index, Compare compareFunc);
 void *_HashMapRemove(HashTable *table, uint32_t key,int index, Compare compareFunc);
 void HashMapAddInteger(HashTable *table, int data);

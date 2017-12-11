@@ -1,13 +1,12 @@
 #include "data.h"
-#include <malloc.h>
 #include "stdint.h"
 #include "stdio.h"
 
 
-Data *dataCreate(uint32_t key,char *name){
+Data *dataCreate(uint32_t key,void *value){
   Data *data = (Data *)malloc(sizeof(Data));
   data->key = key;
-  data->name = name;
+  data->value = value;
 
   return data;
 }
