@@ -17,7 +17,7 @@ struct LinkedList{
   int len;
 };
 
-typedef int(*Compare)(void *value,void **refvalue);
+typedef int(*Compare)(int value,void **refvalue);
 
 void listInit(LinkedList *list);
 void listAdd(LinkedList *list,Item *item);

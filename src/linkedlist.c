@@ -41,7 +41,7 @@ Data *linkSearch(LinkedList *list,uint32_t key,Compare comparefunc){
       return NULL;
     }
     else {
-        while(comparefunc((void*)key,(void*)&(((Data *)now->data))->key) !=0){
+        while(comparefunc(key,(void*)&(((Data *)now->data))->key) !=0){
         past = now;
         now = now->next;
         if(now == NULL){
@@ -64,7 +64,7 @@ void LinkRemove(LinkedList *list,uint32_t key,Compare comparefunc){
 	//if(now == NULL){
 //		return NULL;
 //	else{
-    while(comparefunc((void*)key,(void*)&(((Data *)now->data))->key) !=0){
+    while(comparefunc(key,(void*)&(((Data *)now->data))->key) !=0){
 			past = now;
 			now = now->next;
       if(now == NULL){
