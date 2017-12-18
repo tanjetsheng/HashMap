@@ -44,23 +44,32 @@ Data *linkSearch(LinkedList *list,uint32_t key,Compare comparefunc){
         while(comparefunc((void*)key,(void*)&(((Data *)now->data))->key) !=0){
         past = now;
         now = now->next;
+        if(now == NULL){
+          break;
+        }
       }
+      if(now == NULL){
+        return NULL;
+      }
+      else
       return now->data;
     }
 
 }
 
-void *LinkRemove(LinkedList *list,uint32_t key,Compare comparefunc){
+void LinkRemove(LinkedList *list,uint32_t key,Compare comparefunc){
   Item *past = NULL;
 	Item *now = list->head;
 
-	if(now == NULL){
-		return NULL;
-	}
-	else{
+	//if(now == NULL){
+//		return NULL;
+//	else{
     while(comparefunc((void*)key,(void*)&(((Data *)now->data))->key) !=0){
 			past = now;
 			now = now->next;
+      if(now == NULL){
+        break;
+      }
 		}
     if(now == list->head){
       if(list->head==list->tail){   //first head
@@ -79,8 +88,13 @@ void *LinkRemove(LinkedList *list,uint32_t key,Compare comparefunc){
 		    list->len--;
 	     }
 	  else{
+      if(now == NULL){
+        now = NULL;
+      }
+      else{
 		  past->next = now->next;
 		  list->len--;
+    }
 	   }
    }
-}
+//}

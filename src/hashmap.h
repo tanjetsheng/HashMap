@@ -20,12 +20,12 @@ struct HashTable{
 };
 
 void initHashMap(HashTable *table, int size);
-void _HashMapAdd(HashTable *table, void *data, int hashValue,Compare compareFunc);
+void _HashMapAdd(HashTable *table, void *data,uint32_t key,int hashValue,Compare compareFunc);
 void *_HashMapSearch(HashTable *table, uint32_t key,int index, Compare compareFunc);
-void *_HashMapRemove(HashTable *table, uint32_t key,int index, Compare compareFunc);
-void HashMapAddInteger(HashTable *table, int data);
-void HashMapSearch(HashTable *table, int data);
-void HashMapRemove(HashTable *table, int data);
+void _HashMapRemove(HashTable *table, uint32_t key,int index, Compare compareFunc);
+void HashMapAdd(HashTable *table,void *data,uint32_t key);
+void *HashMapSearch(HashTable *table,void *data,uint32_t key);
+void HashMapRemove(HashTable *table, void *data,uint32_t key);
 
 
 
