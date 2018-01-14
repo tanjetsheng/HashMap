@@ -26,7 +26,7 @@ void _HashMapRemove(HashTable *table, uint32_t key,int index, Compare compareFun
 void HashMapAdd(HashTable *table,void *data,uint32_t key);
 void *HashMapSearch(HashTable *table,void *data,uint32_t key);
 void HashMapRemove(HashTable *table, void *data,uint32_t key);
-
+uint32_t hashUsingModule(uint32_t value,uint32_t range);
 
 
 
